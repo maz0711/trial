@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" type="image/x-icon" href="/trial/logo.png">
+    <link rel="stylesheet" href="style.css">
+	<title>Area Slide</title>
+</head>
+<script>
+	var url = "contents.json";
+	var xhr = new XMLHttpRequest();
+	var cont = '';
 
+	xhr.onreadystatechange = function() {
+	  if(xhr.readyState === 4 && xhr.status === 200) {
+//console.log(this.getResponseHeader( 'Content-Type' ).indexOf( 'application/json' ));
+	    //var obj = JSON.parse(xhr.responseText);
+	    //var obj = JSON.stringify(xhr.responseText);
+        var obj = eval( '(' + this.responseText + ')' );
+//console.log(obj);
+		for (i=0; i<obj.length; i++){
+			cid = '#v' + (i + 1);
+			divElem = document.querySelector(cid);
+			imgElem = document.createElement('img')
+			imgElem.src = obj[i]['img'];
+			txtElem = document.createElement('p');
+			txtElem.textContent = obj[i]['txt'];
+			divElem.appendChild(imgElem);
+			divElem.appendChild(txtElem);
+		}
+	  }
+	}
+	xhr.open('GET', url, true);
+	xhr.responseType = 'text';
+	//xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+	xhr.send();
+</script>
+<body>
+	<div id="container" class='def'>
+		<div class="col">
+			<div class='circle'>
+				<div class='open'><span>List</span></div>
+				<div class='close'><span>Menu</span></div>
+			</div>
+			<div class="cs-options">
+				<ul>
+					<li id='l1' data-value='v1'>open01</li>
+					<li id='l2' data-value='v2'>open02</li>
+					<li id='l3' data-value='v3'>open03</li>
+					<li id='l4' data-value='v4'>open04</li>
+				</ul>
+			</div>
+			<div class='explain'>
+				<h2>Tips</h2>
+				<p>このページで使用している小技</p>
+				<ul>
+					<li><h4>CSS transition</h4><p>JQueryは使用せずCSSでボタンクリック時のアニメーションを設定。</p></li>
+					<li><h4>javascript</h4><p>シンプルにボタンクリック時のコンテンツのラッパークラスを切替。</p></li>
+					<li><h4>Ajax</h4><p>コンテンツの詳細はjsonファイルから読み込み。</p></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col">
+			<div class='contents'>
+				<div id='v1'><h1>cont01</h1></div>
+				<div id='v2'><h1>cont02</h1></div>
+				<div id='v3'><h1>cont03</h1></div>
+				<div id='v4'><h1>cont04</h1></div>
+			</div>
+		</div>
+	</div><!-- container -->
+	<script>
+		document.querySelector( '.open' ).onclick = function(){
+			document.querySelector( '.def' ).classList.toggle('open');
+		};
+		document.querySelector( '.close' ).onclick = function(){
+			document.querySelector( '.def' ).classList.toggle('slide');
+		};
+		list = document.querySelectorAll( '.cs-options li' );
+		for (key in list){
+			list[key].onclick = function(el){
+				document.querySelector( '.def' ).classList.toggle('slide');
+				cont = document.querySelectorAll( '.contents div' );
+				for (var i=0; i<cont.length; i++){
+					cont[i].classList['value'] = '';//class初期化
+				}
+				val = el.path[0].dataset.value;//class追加
+				var conti = "#" + val;
+				document.querySelector( conti ).classList.toggle('selected');
+			};
+		}
+	</script>
+</body>
+</html>

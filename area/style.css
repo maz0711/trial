@@ -1,0 +1,203 @@
+html,body {
+	margin: 0;
+	height: 100%;
+	color: #333;
+}
+#container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	background-color: rgba(0,0,0,0.2);
+}
+.col {
+	background-color: #eeeeee;
+	position: relative;
+	height: 100%;
+	width: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.5s ease-in;
+	visibility: hidden;
+	opacity: 0;
+	}
+.col:first-child {
+	background-color: #f5f5f5;
+	width: 100%;
+	visibility: visible;
+	opacity: 1;
+	display: block;
+}
+.slide .col {
+	width: 80%;
+	visibility: visible;
+	opacity: 1;
+}
+.slide .col:first-child {
+	width: 20%;
+	display: block;
+}
+.col > div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+	transition: all 0.5s ease-in;
+}
+.col div.circle {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background-color: #fff;
+	position: relative;
+	top: calc(50% - 50px);
+}
+.slide .col div.circle {
+	top: 50px;
+}
+.col div.circle div {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.col div.open {
+	z-index: 98;
+}
+.col div.close {
+	visibility: hidden;
+	opacity: 0;
+	z-index: 99;
+}
+.slide .open {
+	visibility: hidden;
+	opacity: 0;
+}
+.slide div.close {
+	visibility: visible;
+	opacity: 1;
+}
+.col > div.cs-options {
+	position: absolute;
+	top: calc(50% - 50px);
+	left: calc(50% - 50px);
+	visibility: hidden;
+	opacity: 0;
+	width: 100px;
+	height: 100px;
+	z-index: 1;
+}
+.open .col > div.cs-options {
+	top: calc(50% - 50px);
+	left: calc(50% - 50px);
+	visibility: visible;
+	opacity: 1;
+}
+.slide .col > div.cs-options {
+	visibility: hidden;
+	display: none;
+	opacity: 0;
+}
+.cs-options li,.open.slide .cs-options li  {
+	visibility: hidden;
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	left: 0;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background-color: #fff;
+}
+.open .cs-options li {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	visibility: visible;
+	opacity: 1;
+	transition: all 0.5s ease-in;
+	position: absolute;
+}
+.open .cs-options li#l1 {
+	top: -150px;
+	left: 0;
+}
+.open .cs-options li#l2 {
+	top: 0;
+	left: 150px;
+}
+.open .cs-options li#l3 {
+	top: 150px;
+	left: 0;
+}
+.open .cs-options li#l4 {
+	top: 0;
+	left: -150px;
+}
+.col div.contents {
+	background-color: #fff;
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+.contents > div {
+	position: absolute;
+	width: 50%;
+	height: 90%;
+	padding: 20px;
+	overflow: hidden;
+	border: 1px solid #ddd;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.5s ease-in;
+}
+.contents h1 {
+	text-align: center;
+}
+.contents img {
+	display: block;
+	margin: 10px auto;
+	max-width: 100%;
+}
+.contents > div.selected {
+	background-color: #fee;
+	visibility: visible;
+	opacity: 1;
+}
+a, a:visited {
+	color: #fdd;
+	text-decoration: none;
+}
+.explain {
+	color: #666;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.5s ease-in;
+	padding: 10px;
+}
+.slide .col > div.explain {
+	display: block;
+	position: relative;
+	top: 100px;
+	visibility: visible;
+	opacity: 1;
+}
+.slide .explain h2 {
+	text-align: center;
+	color: #333;
+}
+.explain h2 + p {
+	text-align: center;
+	font-size: 14px;
+}
+.explain li p {
+	font-size: 14px;
+}
