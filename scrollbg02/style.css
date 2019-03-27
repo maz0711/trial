@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+div {
+    box-sizing: border-box;
+}
+.contents {
+    width: 100%;
+}
+.bg-section {
+    height: 100vh !important;
+    z-index: 1;
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.bg-list {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.ofit {
+    width: 100%;
+    height: 100%;
+/*    position: absolute;*/
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    opacity: 0;
+    transition: 1s;
+}
+.active .ofit {
+    opacity: 1;
+}
+.contents {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+.contents div {
+    width: 50vw;
+    height: 60vh;
+    margin: 20vh auto 40vh;
+    padding: 2rem;
+    border: 2px solid rgba(32, 32, 32, 0.1);
+}
+.contents div h2 {
+    text-align: center;
+    font-size: 32px;
+    margin: 50px auto;
+}
+.contents div:last-child {
+    margin-bottom: 20vh;
+}
+#output {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
