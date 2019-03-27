@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    color: rgba(0, 0, 0, 0.6);
+}
+a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+}
+a:visited, a:active {
+    color: rgba(0, 0, 0, 0.6);
+}
+ul {
+    list-style: none;
+}
+h1, .menu {
+    -webkit-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+}
+h1 {
+    position: absolute;
+    top: 50px;
+    right: 10vw;
+    font-size: 40px;
+    color: rgba(0, 0, 0, 0.8);
+}
+#navigation {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+#main-menu {
+    display: block;
+}
+.mainimg {
+    width: 85vw;
+    height: 80vh;
+    margin: 15vh auto 20vh;
+    overflow: hidden;
+}
+.mainimg img {
+    height: 100%;
+}
+.info-cover {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(255, 208, 0, 0.08);
+    margin: 0 auto;
+    padding: 30vh 0 2rem;
+    z-index: 1;
+}
+.info-cover a {
+    margin: 0 10vw;
+}
+.info {
+    display: flex;
+    justify-content: space-between;
+    width: 85vw;
+    margin: -10vh auto 15vh;
+}
+.info a .box {
+    width: 25vw;
+    height: 25vw;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    z-index: 3;
+}
+.info a {
+    z-index: 2;
+}
+.info .box div:first-child {
+    width: 25vw;
+    height: 15vw;
+    overflow: hidden;
+}
+.info .box div:first-child img {
+    width: 25vw;
+}
+.info .box div:nth-child(2) {
+    position: relative;
+    width: calc(25vw - 20px);
+    height: 10vw;
+    padding: 10px;
+}
+.info .box h2 {
+    line-height: 1.6;
+    font-size: 16px;
+}
+.info .box span {
+    display: block;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+}
+.article {
+    display: flex;
+    width: 85vw;
+    margin: 50px auto;
+}
+.article > div:first-child {
+    width: 30vw;
+    height: 30vw;
+    overflow: hidden;
+}
+.article > div:first-child img {
+    height: 30vw;
+}
+.article .detail {
+    padding: 20px 50px;
+    width: calc(55vw - 100px);/*幅を指定しないと内包するP要素の影響でimgのwrapperが小さくなる*/
+}
+.article .detail .pre {
+    font-size: 14px;
+}
+.article .detail h2 {
+    font-size: 24px;
+    margin: 10px auto 20px;;
+}
+footer {
+    width: 90vw;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+footer div {
+    display: flex;
+    width: 30vw;
+}
+footer div.corp {
+    flex-direction: row-reverse;
+}
+footer div span {
+    display: block;
+    writing-mode: vertical-rl;
+}
