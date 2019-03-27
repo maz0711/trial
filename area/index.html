@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" type="image/x-icon" href="/trial/logo.png">
+	<link rel="shortcut icon" type="image/x-icon" href="/trial/favicon.png">
     <link rel="stylesheet" href="style.css">
 	<title>Area Slide</title>
 </head>
@@ -19,8 +19,7 @@
 	    //var obj = JSON.parse(xhr.responseText);
 	    //var obj = JSON.stringify(xhr.responseText);
         var obj = eval( '(' + this.responseText + ')' );
-//console.log(obj);
-		for (i=0; i<obj.length; i++){
+		for (i　=　0; i　<　obj.length　-　1; i++){
 			cid = '#v' + (i + 1);
 			divElem = document.querySelector(cid);
 			imgElem = document.createElement('img')
@@ -46,10 +45,10 @@
 			</div>
 			<div class="cs-options">
 				<ul>
-					<li id='l1' data-value='v1'>open01</li>
-					<li id='l2' data-value='v2'>open02</li>
-					<li id='l3' data-value='v3'>open03</li>
-					<li id='l4' data-value='v4'>open04</li>
+					<li id='l1' data-value='v1'><span>open01</span></li>
+					<li id='l2' data-value='v2'><span>open02</span></li>
+					<li id='l3' data-value='v3'><span>open03</span></li>
+					<li id='l4' data-value='v4'><span>open04</span></li>
 				</ul>
 			</div>
 			<div class='explain'>
@@ -79,16 +78,25 @@
 			document.querySelector( '.def' ).classList.toggle('slide');
 		};
 		list = document.querySelectorAll( '.cs-options li' );
+//console.log(list.length);
 		for (key in list){
 			list[key].onclick = function(el){
+//console.log(el);
 				document.querySelector( '.def' ).classList.toggle('slide');
 				cont = document.querySelectorAll( '.contents div' );
-				for (var i=0; i<cont.length; i++){
+				for (i　=　0; i　<　cont.length; i++){
 					cont[i].classList['value'] = '';//class初期化
 				}
-				val = el.path[0].dataset.value;//class追加
+				//val = el.path[0].dataset.value;//class追加
+				if(el.target.localName == 'li'){//クリックエリアがspanの内外でイベント取得オブジェクトが変わる
+					val = el.target.dataset.value;//class追加
+				}else if(el.target.localName == 'span'){
+					val = el.target.offsetParent.dataset.value;//class追加
+				}
+//console.log(val);
 				var conti = "#" + val;
 				document.querySelector( conti ).classList.toggle('selected');
+//console.log(cont);
 			};
 		}
 	</script>

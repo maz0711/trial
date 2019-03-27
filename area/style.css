@@ -103,7 +103,6 @@ html,body {
 }
 .slide .col > div.cs-options {
 	visibility: hidden;
-	display: none;
 	opacity: 0;
 }
 .cs-options li,.open.slide .cs-options li  {
@@ -150,7 +149,7 @@ html,body {
 }
 .contents > div {
 	position: absolute;
-	width: 50%;
+	width: 80%;
 	height: 90%;
 	padding: 20px;
 	overflow: hidden;
