@@ -1,0 +1,52 @@
+<!--
+Transform/index.html
+2019/3/22
+
+<a>にonclickではなくEventListenerを登録すると、hrefが優先して遷移してしまう
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="shortcut icon" type="image/x-icon" href="../logo.jpg">
+    <title>Transform</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class='wrap'>
+        <div class='change'><button class='hr'>Horizontal</button><button class='vr'>Vertical</button></div>
+        <div class='inner col'>
+            <div class='item'><img src="img/aa.jpg" alt='aa'></div>
+            <div class='item'><img src="img/bb.jpg" alt='bb'></div>
+            <div class='item'><img src="img/cc.jpg" alt='cc'></div>
+        </div>
+    </div>
+<script>
+    var items = document.querySelectorAll('.item');
+    Array.from(items).forEach(event => {
+        event.addEventListener('click', function(){
+            Array.from(items).forEach(obj => {
+                if(obj == this){
+                    if(this.classList.contains('active')){
+                        this.classList.remove('active');
+                    }else{
+                        this.classList.toggle('active');
+                    }
+                }else{
+                    obj.classList.remove('active');
+                }
+            });
+        });
+    });
+    document.querySelector('button.hr').addEventListener('click',function(){
+        document.querySelector('.inner').classList = 'inner col';
+    });
+    document.querySelector('button.vr').addEventListener('click',function(){
+        document.querySelector('.inner').classList = 'inner row';
+    });
+</script>
+</body>
+</html>
